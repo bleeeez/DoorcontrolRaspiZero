@@ -46,9 +46,12 @@
   <ImportGroup Label="Shared" />
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <IncludePath>$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <Link>
-      <LibraryDependencies>wiringPi</LibraryDependencies>
+      <LibraryDependencies>wiringPi;paho-mqtt3as;paho-mqttpp3</LibraryDependencies>
     </Link>
     <RemotePostBuildEvent>
       <Command>gpio export 17 out</Command>
@@ -68,6 +71,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="global.h" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
